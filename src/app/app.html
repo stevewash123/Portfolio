@@ -39,15 +39,19 @@
 
             <ng-template #actionLive>
               <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'">
-                👁️
-                Live Demo
+                <button nz-button nzType="primary" nzSize="small" style="width: 100%;">
+                  👁️
+                  Live Demo
+                </button>
               </a>
             </ng-template>
 
             <ng-template #actionGithub>
               <a [href]="project.github" target="_blank">
-                💻
-                GitHub
+                <button nz-button nzType="default" nzSize="small" style="width: 100%;">
+                  💻
+                  GitHub
+                </button>
               </a>
             </ng-template>
 
