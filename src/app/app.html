@@ -1,1 +1,106 @@
-<router-outlet />
+<div class="portfolio-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Steve Wash</h1>
+      <h2 style="font-size: 1.8rem; font-weight: 400; margin: 0 0 24px; opacity: 0.9;">Full-Stack Developer Portfolio</h2>
+      <p class="hero-subtitle">
+        Crafting modern web applications with Angular, .NET, and enterprise-grade architecture.
+        Passionate about clean code, scalable solutions, and exceptional user experiences.
+      </p>
+      <div class="hero-cta">
+        <button nz-button nzType="primary" nzSize="large" (click)="scrollToProjects()">
+          🚀
+          View Projects
+        </button>
+        <button nz-button nzSize="large" (click)="scrollToContact()">
+          📧
+          Get In Touch
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="content-section" id="projects">
+    <div class="section-container">
+      <h2 class="section-title">Featured Projects</h2>
+
+      <div nz-row [nzGutter]="[24, 24]" class="projects-grid">
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzLg]="6" *ngFor="let project of projects">
+          <nz-card class="project-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub]">
+            <ng-template #coverTemplate>
+              <div class="project-image">
+                {{ project.title === 'LongRunningJobs' ? '⏳' :
+                   project.title === 'LessonTree' ? '📚' :
+                   project.title === 'Lexical Parser' ? '🔍' : '🗂️' }}
+              </div>
+            </ng-template>
+
+            <ng-template #actionLive>
+              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'">
+                👁️
+                Live Demo
+              </a>
+            </ng-template>
+
+            <ng-template #actionGithub>
+              <a [href]="project.github" target="_blank">
+                💻
+                GitHub
+              </a>
+            </ng-template>
+
+
+            <nz-card-meta
+              [nzTitle]="project.title"
+              [nzDescription]="project.description">
+            </nz-card-meta>
+
+            <div class="project-tech">
+              <nz-tag *ngFor="let tech of project.technologies" nzColor="blue" nzSize="small">
+                {{ tech }}
+              </nz-tag>
+            </div>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="tech-section">
+    <div class="section-container">
+      <h2 class="section-title">Technology Stack</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card" *ngFor="let category of techStack">
+          <h3 class="tech-category">{{ category.category }}</h3>
+          <div class="tech-list">
+            <nz-tag *ngFor="let tech of category.technologies" nzColor="processing" nzSize="small">
+              {{ tech }}
+            </nz-tag>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Footer Section -->
+  <section class="footer-section" id="contact">
+    <div class="footer-content">
+      <h2 style="color: white;">Let's Build Something Amazing Together</h2>
+      <p>I'm always interested in discussing new opportunities and innovative projects.</p>
+
+      <div style="margin-top: 24px;">
+        <a href="mailto:stevewash123@gmail.com">
+          <button nz-button nzType="primary" nzSize="large" style="margin: 0 8px;">
+            📧
+            stevewash123@gmail.com
+          </button>
+        </a>
+        <!-- LinkedIn hidden for now -->
+      </div>
+    </div>
+  </section>
+</div>
