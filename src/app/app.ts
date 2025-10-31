@@ -45,14 +45,14 @@ export class App {
       image: '/assets/lessontree-preview.png'
     },
     {
-      title: 'Lexical Parser',
-      description: 'Recipe search query lexical parser featuring complex inheritance patterns, method chaining, and advanced operator precedence handling.',
-      technologies: ['Angular', 'C#', '.NET', 'Lexical Analysis'],
-      liveDemo: 'https://recipefinder-ui.onrender.com',
-      github: 'https://github.com/your-username/recipefinder',
+      title: 'Recipe Parser V2',
+      description: 'Boolean query parser demonstration with N-tier architecture, featuring advanced query parsing, parse tree visualization, and SQL generation.',
+      technologies: ['Angular', 'C#', '.NET', 'Boolean Query Parser', 'Superpower Library', 'TheMealDB API'],
+      liveDemo: 'https://recipeparserv2-ui.onrender.com',
+      github: 'https://github.com/stevewash123/RecipeParserV2_UI',
       status: 'Live on Render',
       statusNote: 'May take 1-2 minutes to wake up from sleep mode',
-      image: '/assets/recipefinder-preview.png'
+      image: '/assets/recipeparserv2-preview.png'
     },
     {
       title: 'Table Wrapper',
