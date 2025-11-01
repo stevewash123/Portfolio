@@ -78,7 +78,4 @@ export class App {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  scrollToContact(): void {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  }
 }
