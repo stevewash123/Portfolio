@@ -1,0 +1,89 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Steve Wash</h1>
+      <h2 style="font-size: 1.8rem; font-weight: 400; margin: 0 0 24px; opacity: 0.9;">Full-Stack Developer Portfolio</h2>
+      <p class="hero-subtitle">
+        Crafting modern web applications with Angular, .NET, and enterprise-grade architecture.
+        Passionate about clean code, scalable solutions, and exceptional user experiences.
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio Categories Section -->
+  <section class="categories-section">
+    <div class="section-container">
+      <div nz-row [nzGutter]="[32, 32]" class="categories-grid">
+        <!-- Business Applications Card -->
+        <div nz-col [nzXs]="24" [nzSm]="12">
+          <nz-card class="category-card business-card" nzHoverable>
+            <div class="card-content">
+              <div class="card-icon business-icon">
+                💼
+              </div>
+              <h3 class="card-title">Business Applications</h3>
+              <p class="card-description">
+                Full-scale SaaS applications and enterprise solutions designed for real business needs.
+                These projects demonstrate comprehensive business logic, user management, and workflow automation.
+              </p>
+              <div class="card-features">
+                <div class="feature">✓ Complete business workflows</div>
+                <div class="feature">✓ User authentication & authorization</div>
+                <div class="feature">✓ QuickBooks Integration</div>
+                <div class="feature">✓ Real world business applications</div>
+              </div>
+              <button nz-button nzType="primary" nzSize="large" nzBlock (click)="navigateToBusinessApps()">
+                <span nz-icon nzType="arrow-right"></span>
+                Explore Business Apps
+              </button>
+            </div>
+          </nz-card>
+        </div>
+
+        <!-- Technology Demos Card -->
+        <div nz-col [nzXs]="24" [nzSm]="12">
+          <nz-card class="category-card tech-card" nzHoverable>
+            <div class="card-content">
+              <div class="card-icon tech-icon">
+                🔧
+              </div>
+              <h3 class="card-title">Technology Demos</h3>
+              <p class="card-description">
+                Technical demonstrations showcasing specific technologies, algorithms, and development patterns.
+                These projects highlight technical expertise and innovation in software engineering.
+              </p>
+              <div class="card-features">
+                <div class="feature">✓ Asynchronous background processing with monitoring</div>
+                <div class="feature">✓ Advanced algorithms & parsing</div>
+                <div class="feature">✓ Component libraries</div>
+                <div class="feature">✓ Architecture patterns</div>
+              </div>
+              <button nz-button nzType="primary" nzSize="large" nzBlock (click)="navigateToTechDemos()">
+                <span nz-icon nzType="arrow-right"></span>
+                View Tech Demos
+              </button>
+            </div>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Footer Section -->
+  <section class="footer-section" id="contact">
+    <div class="footer-content">
+      <h2 style="color: white;">Let's Build Something Amazing Together</h2>
+      <p>I'm always interested in discussing new opportunities and innovative projects.</p>
+
+      <div style="margin-top: 24px;">
+        <a href="mailto:stevewash123@gmail.com">
+          <button nz-button nzType="primary" nzSize="large" style="margin: 0 8px;">
+            📧
+            stevewash123@gmail.com
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

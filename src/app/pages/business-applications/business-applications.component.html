@@ -1,0 +1,182 @@
+<div class="business-container">
+  <!-- Header Section -->
+  <section class="header-section">
+    <div class="header-content">
+      <button nz-button nzType="text" nzSize="large" class="back-button" (click)="goBack()">
+        <span nz-icon nzType="arrow-left"></span>
+        Back to Portfolio
+      </button>
+      <h1 class="page-title">Business Applications</h1>
+      <p class="page-subtitle">
+        Full-scale SaaS applications and enterprise solutions designed for real business needs.
+        These projects demonstrate comprehensive business logic, user management, and workflow automation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="section-container">
+      <div nz-row [nzGutter]="[32, 32]" class="projects-grid">
+        <div nz-col [nzXs]="24" [nzSm]="12" *ngFor="let project of businessProjects">
+          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable>
+            <ng-template #coverTemplate>
+              <div class="project-image">
+                {{ getCategoryIcon(project.category) }}
+                <div class="category-badge">{{ project.category }}</div>
+              </div>
+            </ng-template>
+
+            <ng-template #actionLive>
+              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'" *ngIf="project.liveDemo !== '#'">
+                <button nz-button nzType="primary" nzSize="small" style="width: 100%;">
+                  <span nz-icon nzType="eye"></span>
+                  Live Demo
+                </button>
+              </a>
+              <button *ngIf="project.liveDemo === '#'" nz-button nzType="primary" nzSize="small" style="width: 100%;" disabled>
+                <span nz-icon nzType="clock-circle"></span>
+                Coming Soon
+              </button>
+            </ng-template>
+
+            <ng-template #actionGithub>
+              <a [href]="project.github" target="_blank">
+                <button nz-button nzType="default" nzSize="small" style="width: 100%;">
+                  <span nz-icon nzType="github"></span>
+                  GitHub
+                </button>
+              </a>
+            </ng-template>
+
+            <ng-template #actionDetails>
+              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project)">
+                <span nz-icon nzType="info-circle"></span>
+                Details
+              </button>
+            </ng-template>
+
+            <nz-card-meta
+              [nzTitle]="project.title"
+              [nzDescription]="project.description">
+            </nz-card-meta>
+
+            <div class="simplified-info">
+              <div class="status-badge" [class]="project.status.toLowerCase().replace(' ', '-')">
+                {{ project.status }}
+              </div>
+            </div>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Coming Soon Section -->
+  <section class="coming-soon-section">
+    <div class="section-container">
+      <h2 class="section-title">More Business Applications Coming Soon</h2>
+      <p class="coming-soon-description">
+        I'm continuously working on new business applications that solve real-world problems.
+        Check back soon for additional SaaS applications and enterprise solutions.
+      </p>
+
+      <div class="preview-cards">
+        <div class="preview-card">
+          <div class="preview-icon">💼</div>
+          <h3>CRM System</h3>
+          <p>Customer relationship management with sales pipeline tracking</p>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-icon">📊</div>
+          <h3>Analytics Dashboard</h3>
+          <p>Business intelligence platform with real-time reporting</p>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-icon">🏢</div>
+          <h3>HR Management</h3>
+          <p>Employee management system with payroll integration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details Modal -->
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    (nzOnCancel)="closeModal()"
+    [nzTitle]="selectedProject?.title"
+    [nzFooter]="null"
+    nzWidth="700px">
+
+    <ng-container *nzModalContent>
+      <div *ngIf="selectedProject" class="modal-content">
+
+        <!-- Project Description -->
+        <div class="modal-section">
+          <h4>Description</h4>
+          <p>{{ selectedProject.description }}</p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="modal-section">
+          <h4>Key Features</h4>
+          <ul class="feature-list">
+            <li *ngFor="let feature of selectedProject.features">{{ feature }}</li>
+          </ul>
+        </div>
+
+        <!-- Business Value -->
+        <div class="modal-section">
+          <h4>Business Value</h4>
+          <ul class="value-list">
+            <li *ngFor="let value of selectedProject.businessValue">{{ value }}</li>
+          </ul>
+        </div>
+
+        <!-- Technologies -->
+        <div class="modal-section">
+          <h4>Technologies Used</h4>
+          <div class="project-tech">
+            <nz-tag *ngFor="let tech of selectedProject.technologies" nzColor="blue" nzSize="default">
+              {{ tech }}
+            </nz-tag>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="modal-section">
+          <h4>Status</h4>
+          <div class="status-info">
+            <strong>{{ selectedProject.status }}</strong>
+            <div class="status-note" *ngIf="selectedProject.statusNote">{{ selectedProject.statusNote }}</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="modal-actions">
+          <a [href]="selectedProject.liveDemo" [target]="selectedProject.liveDemo.startsWith('http') ? '_blank' : '_self'" *ngIf="selectedProject.liveDemo !== '#'">
+            <button nz-button nzType="primary" nzSize="default">
+              <span nz-icon nzType="eye"></span>
+              Live Demo
+            </button>
+          </a>
+          <button *ngIf="selectedProject.liveDemo === '#'" nz-button nzType="primary" nzSize="default" disabled>
+            <span nz-icon nzType="clock-circle"></span>
+            Coming Soon
+          </button>
+          <a [href]="selectedProject.github" target="_blank" style="margin-left: 8px;">
+            <button nz-button nzType="default" nzSize="default">
+              <span nz-icon nzType="github"></span>
+              GitHub
+            </button>
+          </a>
+        </div>
+
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>

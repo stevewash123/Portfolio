@@ -1,0 +1,208 @@
+<div class="tech-container">
+  <!-- Header Section -->
+  <section class="header-section">
+    <div class="header-content">
+      <button nz-button nzType="text" nzSize="large" class="back-button" (click)="goBack()">
+        <span nz-icon nzType="arrow-left"></span>
+        Back to Portfolio
+      </button>
+      <h1 class="page-title">Technology Demos</h1>
+      <p class="page-subtitle">
+        Technical demonstrations showcasing specific technologies, algorithms, and development patterns.
+        These projects highlight technical expertise and innovation in software engineering.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="section-container">
+      <div nz-row [nzGutter]="[24, 24]" class="projects-grid">
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzLg]="8" *ngFor="let project of techProjects">
+          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable>
+            <ng-template #coverTemplate>
+              <div class="project-image">
+                {{ getCategoryIcon(project.category) }}
+                <div class="category-badge">{{ project.category }}</div>
+              </div>
+            </ng-template>
+
+            <ng-template #actionLive>
+              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'">
+                <button nz-button nzType="primary" nzSize="small" style="width: 100%;">
+                  <span nz-icon nzType="eye"></span>
+                  Live Demo
+                </button>
+              </a>
+            </ng-template>
+
+            <ng-template #actionGithub>
+              <a [href]="project.github" target="_blank">
+                <button nz-button nzType="default" nzSize="small" style="width: 100%;">
+                  <span nz-icon nzType="github"></span>
+                  GitHub
+                </button>
+              </a>
+            </ng-template>
+
+            <ng-template #actionDetails>
+              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project)">
+                <span nz-icon nzType="info-circle"></span>
+                Details
+              </button>
+            </ng-template>
+
+            <nz-card-meta
+              [nzTitle]="project.title"
+              [nzDescription]="project.description">
+            </nz-card-meta>
+
+            <div class="simplified-info">
+              <div class="status-badge" [class]="project.status.toLowerCase().replace(' ', '-')">
+                {{ project.status }}
+              </div>
+            </div>
+          </nz-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Technical Focus Areas -->
+  <section class="focus-areas-section">
+    <div class="section-container">
+      <h2 class="section-title">Technical Focus Areas</h2>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <div class="focus-icon">🏗️</div>
+          <h3>Architecture Patterns</h3>
+          <p>Demonstrating enterprise-grade architectural patterns including CQRS, N-tier architecture, and microservices communication.</p>
+          <ul>
+            <li>Background job processing</li>
+            <li>Real-time communication</li>
+            <li>Scalable queue management</li>
+          </ul>
+        </div>
+
+        <div class="focus-card">
+          <div class="focus-icon">🔍</div>
+          <h3>Algorithms & Parsing</h3>
+          <p>Advanced algorithms for parsing, query processing, and data transformation with visual debugging capabilities.</p>
+          <ul>
+            <li>Boolean query parsing</li>
+            <li>Parse tree visualization</li>
+            <li>SQL generation</li>
+          </ul>
+        </div>
+
+        <div class="focus-card">
+          <div class="focus-icon">🗂️</div>
+          <h3>Component Libraries</h3>
+          <p>Reusable, enterprise-grade components with declarative configuration and performance optimization.</p>
+          <ul>
+            <li>Declarative configuration</li>
+            <li>Performance optimization</li>
+            <li>Cross-framework compatibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon Section -->
+  <section class="coming-soon-section">
+    <div class="section-container">
+      <h2 class="section-title">More Technical Demos Coming Soon</h2>
+      <p class="coming-soon-description">
+        I'm continuously exploring new technologies and development patterns.
+        Check back for additional technical demonstrations and proof-of-concepts.
+      </p>
+
+      <div class="preview-cards">
+        <div class="preview-card">
+          <div class="preview-icon">🤖</div>
+          <h3>AI/ML Integration</h3>
+          <p>Machine learning model integration with real-time prediction APIs</p>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-icon">🔐</div>
+          <h3>Security Patterns</h3>
+          <p>Advanced authentication, authorization, and security implementation patterns</p>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-icon">📊</div>
+          <h3>Data Visualization</h3>
+          <p>Interactive charts and dashboards with real-time data streaming</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details Modal -->
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    (nzOnCancel)="closeModal()"
+    [nzTitle]="selectedProject?.title"
+    [nzFooter]="null"
+    nzWidth="600px">
+
+    <ng-container *nzModalContent>
+      <div *ngIf="selectedProject" class="modal-content">
+
+        <!-- Project Description -->
+        <div class="modal-section">
+          <h4>Description</h4>
+          <p>{{ selectedProject.description }}</p>
+        </div>
+
+        <!-- Technical Highlights -->
+        <div class="modal-section">
+          <h4>Technical Highlights</h4>
+          <ul class="highlight-list">
+            <li *ngFor="let highlight of selectedProject.highlights">{{ highlight }}</li>
+          </ul>
+        </div>
+
+        <!-- Technologies -->
+        <div class="modal-section">
+          <h4>Technologies</h4>
+          <div class="project-tech">
+            <nz-tag *ngFor="let tech of selectedProject.technologies" nzColor="blue" nzSize="default">
+              {{ tech }}
+            </nz-tag>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="modal-section">
+          <h4>Status</h4>
+          <div class="status-info">
+            <strong>{{ selectedProject.status }}</strong>
+            <div class="status-note" *ngIf="selectedProject.statusNote">{{ selectedProject.statusNote }}</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="modal-actions">
+          <a [href]="selectedProject.liveDemo" [target]="selectedProject.liveDemo.startsWith('http') ? '_blank' : '_self'">
+            <button nz-button nzType="primary" nzSize="default">
+              <span nz-icon nzType="eye"></span>
+              Live Demo
+            </button>
+          </a>
+          <a [href]="selectedProject.github" target="_blank" style="margin-left: 8px;">
+            <button nz-button nzType="default" nzSize="default">
+              <span nz-icon nzType="github"></span>
+              GitHub
+            </button>
+          </a>
+        </div>
+
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>
