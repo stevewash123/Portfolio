@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData } from 'chart.js';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { GoogleAnalyticsService } from '../../services/google-analytics.service'
 export class GuideOverviewComponent {
 
   // Chart configuration
-  public barChartType: ChartType = 'bar';
+  public barChartType = 'bar' as const;
   public barChartData: ChartData<'bar'> = {
     labels: ['Small Automation', 'Forms & Data Collection', 'Workflow Systems', 'Full Applications', 'Off-the-Shelf Suite'],
     datasets: [
