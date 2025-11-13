@@ -44,14 +44,14 @@ export class GuideOverviewComponent {
     datasets: [
       {
         label: 'Starting Point',
-        data: [1, 3, 5, 10, 15], // Minimum values
+        data: [1, 3, 5, 10, 10], // Minimum values - changed Off-the-Shelf from 15 to 10
         backgroundColor: 'transparent',
         borderWidth: 0,
         barPercentage: 0.7
       },
       {
         label: 'Range',
-        data: [4, 5, 15, 40, 20], // Range spans (max - min)
+        data: [4, 5, 15, 40, 25], // Range spans (max - min) - Off-the-Shelf: 35-10=25
         backgroundColor: ['#28a745', '#007acc', '#6f42c1', '#fd7e14', '#dc3545'],
         borderWidth: 0,
         barPercentage: 0.7
@@ -101,7 +101,7 @@ export class GuideOverviewComponent {
               { min: 3, max: 8 },   // Forms & Data Collection
               { min: 5, max: 20 },  // Workflow Systems
               { min: 10, max: 50 }, // Full Applications
-              { min: 15, max: 35 }  // Off-the-Shelf Suite
+              { min: 10, max: 35 }  // Off-the-Shelf Suite - changed from 15 to 10
             ];
             const range = ranges[categoryIndex];
             return `Cost Range: $${range.min}K - $${range.max}K${range.max === 50 ? '+' : ''}`;
