@@ -288,37 +288,40 @@
   z-index: 3;
 }
 
-/* Bar Colors and Positioning - Logarithmic-Inspired Scale */
-/* Simple scale mapping: $0=0%, $5K=20%, $10K=40%, $15K=55%, $20K=70%, $30K=85%, $50K=100% */
+/* Bar Colors and Positioning - Accurate Grid Alignment */
+/* Grid positions: $0=0%, $5K=18.2%, $10K=36.4%, $15K=54.5%, $20K=72.7%, $30K=85.5%, $50K+=100% */
+/* Total flex units: 0 + 1 + 1 + 1 + 1 + 0.7 + 0.3 + 0.5 = 5.5 */
 
 .small-automation {
   background: linear-gradient(90deg, #28a745, #20c997);
-  margin-left: 2%; /* $1K ≈ 2% */
-  width: 18%; /* $1K to $5K = 2% to 20% */
+  margin-left: 3.6%; /* $1K = 1/5 of way to $5K = 18.2% * 0.2 = 3.6% */
+  width: 14.6%; /* $1K to $5K = 3.6% to 18.2% = 14.6% width */
 }
 
 .forms-data {
   background: linear-gradient(90deg, #007acc, #0056b3);
-  margin-left: 12%; /* $3K ≈ 12% */
-  width: 20%; /* $3K to $8K = 12% to 32% */
+  margin-left: 10.9%; /* $3K = 3/5 of way to $5K = 18.2% * 0.6 = 10.9% */
+  width: 18.2%; /* $3K to $8K = 10.9% to 29.1% = 18.2% width */
+  /* $8K = $5K + 3/5 to $10K = 18.2% + (36.4%-18.2%) * 0.6 = 18.2% + 10.9% = 29.1% */
 }
 
 .workflow-systems {
   background: linear-gradient(90deg, #6f42c1, #5a359a);
-  margin-left: 20%; /* $5K = 20% */
-  width: 50%; /* $5K to $20K = 20% to 70% */
+  margin-left: 18.2%; /* $5K = exactly at grid line = 18.2% */
+  width: 54.5%; /* $5K to $20K = 18.2% to 72.7% = 54.5% width */
 }
 
 .full-applications {
   background: linear-gradient(90deg, #fd7e14, #e55b0f);
-  margin-left: 40%; /* $10K = 40% */
-  width: 60%; /* $10K to $50K+ = 40% to 100% */
+  margin-left: 36.4%; /* $10K = exactly at grid line = 36.4% */
+  width: 63.6%; /* $10K to $50K+ = 36.4% to 100% = 63.6% width */
 }
 
 .off-shelf-suite {
   background: linear-gradient(90deg, #dc3545, #bd2130);
-  margin-left: 55%; /* $15K = 55% */
-  width: 30%; /* $15K to $35K = 55% to 85% */
+  margin-left: 54.5%; /* $15K = exactly at grid line = 54.5% */
+  width: 31.0%; /* $15K to $35K = 54.5% to 85.5% = 31.0% width */
+  /* $35K = $30K + 1/2 to break = 85.5% + 0% = 85.5% (since it ends right at $30K mark, not in break) */
 }
 
 .bar-label {
