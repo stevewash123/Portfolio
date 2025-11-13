@@ -28,13 +28,17 @@ export class WorksheetComponent {
       contactName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      currentState: ['', Validators.required],
-      problemStatement: ['', Validators.required],
-      currentSolutions: ['', Validators.required],
-      timeline: ['', Validators.required],
-      budget: ['', Validators.required],
-      successMetrics: ['', Validators.required],
-      additionalInfo: ['']
+      currentProcess: ['', Validators.required],
+      idealProcess: ['', Validators.required],
+      userTypes: ['', Validators.required],
+      dataTracking: ['', Validators.required],
+      coreWorkflows: ['', Validators.required],
+      reportsOutputs: ['', Validators.required],
+      existingSystems: ['', Validators.required],
+      timelineBudget: ['', Validators.required],
+      sendCopyToEmail: [true],
+      copyEmailAddress: ['', [Validators.required, Validators.email]],
+      scheduleConsultation: [false]
     });
   }
 
@@ -43,27 +47,49 @@ export class WorksheetComponent {
   }
 
   onSubmit() {
-    if (this.worksheetForm.valid) {
+    if (this.worksheetForm.valid && this.isSubmissionOptionsValid()) {
       this.isSubmitting = true;
       this.showErrorMessage = false;
 
-      // Track form submission
+      const formData = this.worksheetForm.value;
+
+      // Track form submission with additional options
       this.ga.trackEvent('form_submission', {
         form_name: 'project_worksheet',
-        business_name: this.worksheetForm.value.businessName
+        business_name: formData.businessName,
+        send_copy: formData.sendCopyToEmail,
+        schedule_consultation: formData.scheduleConsultation
       });
 
-      // Send email via email service
-      this.emailService.sendWorksheet(this.worksheetForm.value).subscribe({
+      // Send email via email service with additional options
+      this.emailService.sendWorksheet(formData).subscribe({
         next: (response) => {
           this.isSubmitting = false;
           if (response.success) {
             this.showSuccessMessage = true;
+
             // Track successful submission
             this.ga.trackEvent('form_success', {
               form_name: 'project_worksheet',
-              business_name: this.worksheetForm.value.businessName
+              business_name: formData.businessName
             });
+
+            // Send copy email if requested
+            if (formData.sendCopyToEmail && formData.copyEmailAddress) {
+              this.emailService.sendWorksheetCopy(formData, formData.copyEmailAddress).subscribe({
+                next: (copyResponse) => {
+                  if (copyResponse.success) {
+                    this.ga.trackEvent('copy_email_sent', {
+                      form_name: 'project_worksheet',
+                      copy_email: formData.copyEmailAddress
+                    });
+                  }
+                },
+                error: (copyError) => {
+                  console.warn('Copy email failed:', copyError);
+                }
+              });
+            }
           } else {
             this.showErrorMessage = true;
           }
@@ -107,9 +133,65 @@ export class WorksheetComponent {
     });
   }
 
+  onConsultationChange() {
+    if (this.worksheetForm.get('scheduleConsultation')?.value) {
+      // Track consultation interest
+      this.ga.trackEvent('consultation_interest', {
+        source: 'worksheet_form',
+        event_category: 'engagement'
+      });
+
+      // Open calendar scheduling link
+      window.open('https://calendar.app.google/hFTk1RU3zLhHkLop6', '_blank');
+    }
+  }
+
+  onSendCopyChange() {
+    const sendCopyChecked = this.worksheetForm.get('sendCopyToEmail')?.value;
+    const emailControl = this.worksheetForm.get('copyEmailAddress');
+
+    if (sendCopyChecked) {
+      // Add email validation when checkbox is checked
+      emailControl?.setValidators([Validators.required, Validators.email]);
+      emailControl?.enable();
+    } else {
+      // Remove validation and clear value when unchecked
+      emailControl?.clearValidators();
+      emailControl?.setValue('');
+      emailControl?.disable();
+    }
+    emailControl?.updateValueAndValidity();
+  }
+
   resetForm() {
     this.worksheetForm.reset();
     this.showSuccessMessage = false;
     this.showErrorMessage = false;
+  }
+
+  isSubmissionOptionsValid(): boolean {
+    const formData = this.worksheetForm.value;
+    const sendCopy = formData.sendCopyToEmail;
+    const scheduleConsultation = formData.scheduleConsultation;
+
+    // At least one checkbox must be selected
+    if (!sendCopy && !scheduleConsultation) {
+      return false;
+    }
+
+    // If send copy is selected, email must be valid
+    if (sendCopy) {
+      const emailControl = this.worksheetForm.get('copyEmailAddress');
+      return emailControl?.valid || false;
+    }
+
+    return true;
+  }
+
+  get isSubmitDisabled(): boolean {
+    return this.isSubmitting ||
+           this.showSuccessMessage ||
+           !this.worksheetForm.valid ||
+           !this.isSubmissionOptionsValid();
   }
 }
