@@ -1,0 +1,273 @@
+<div class="worksheet-container">
+  <header class="worksheet-header">
+    <h1 class="worksheet-title">Project Specification Worksheet</h1>
+    <p class="worksheet-subtitle">Define your custom software requirements</p>
+
+    <div class="resource-links">
+      <a href="/guide" class="resource-link" (click)="trackGuideNavigation()">Decision Guide</a>
+      <a href="/assets/Project-Specification-Worksheet.pdf" target="_blank" class="resource-link pdf" (click)="trackPdfDownload()">View PDF Version</a>
+    </div>
+  </header>
+
+  <div class="introduction">
+    <h3>Before You Start</h3>
+    <p>This worksheet will help you clearly define your software requirements. Take your time with each section - the more detailed your answers, the more accurate any quotes or recommendations will be.</p>
+    <p><strong>Estimated Time:</strong> 15-30 minutes</p>
+  </div>
+
+  <div class="form-container">
+    <form [formGroup]="worksheetForm" (ngSubmit)="onSubmit()">
+
+      <!-- Contact Information -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">1</span>
+          Contact Information
+        </h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="businessName">
+              Business/Organization Name <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="businessName"
+              class="form-control"
+              formControlName="businessName"
+              placeholder="Enter your business name">
+            <div class="validation-error" *ngIf="worksheetForm.get('businessName')?.invalid && worksheetForm.get('businessName')?.touched">
+              Business name is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactName">
+              Contact Name <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="contactName"
+              class="form-control"
+              formControlName="contactName"
+              placeholder="Your full name">
+            <div class="validation-error" *ngIf="worksheetForm.get('contactName')?.invalid && worksheetForm.get('contactName')?.touched">
+              Contact name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email">
+              Email Address <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="your@email.com">
+            <div class="validation-error" *ngIf="worksheetForm.get('email')?.invalid && worksheetForm.get('email')?.touched">
+              <span *ngIf="worksheetForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="worksheetForm.get('email')?.errors?.['email']">Please enter a valid email address</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-control"
+              formControlName="phone"
+              placeholder="(555) 123-4567">
+            <div class="form-help">Optional - for follow-up discussions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current State Assessment -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">2</span>
+          Current State Assessment
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="currentState">
+            Describe your current business processes and pain points <span class="required">*</span>
+          </label>
+          <textarea
+            id="currentState"
+            class="form-control"
+            formControlName="currentState"
+            placeholder="What are you doing now? What's working? What's not working? Be specific about problems you're facing."></textarea>
+          <div class="form-help">Example: "We currently track inventory in Excel spreadsheets. It takes 2 hours daily to update, and we often have stock discrepancies."</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('currentState')?.invalid && worksheetForm.get('currentState')?.touched">
+            Current state description is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">3</span>
+          Problem Statement
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="problemStatement">
+            What specific problem are you trying to solve? <span class="required">*</span>
+          </label>
+          <textarea
+            id="problemStatement"
+            class="form-control"
+            formControlName="problemStatement"
+            placeholder="In one or two sentences, clearly state the main problem you need software to solve."></textarea>
+          <div class="form-help">Be specific and focus on the business impact. What would happen if you don't solve this problem?</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('problemStatement')?.invalid && worksheetForm.get('problemStatement')?.touched">
+            Problem statement is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Solutions -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">4</span>
+          Current Solutions & Research
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="currentSolutions">
+            What have you already tried? What existing solutions have you researched? <span class="required">*</span>
+          </label>
+          <textarea
+            id="currentSolutions"
+            class="form-control"
+            formControlName="currentSolutions"
+            placeholder="List any software, tools, or processes you've tried. Include what worked, what didn't, and why."></textarea>
+          <div class="form-help">This helps avoid suggesting solutions you've already eliminated and shows you've done your homework.</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('currentSolutions')?.invalid && worksheetForm.get('currentSolutions')?.touched">
+            Information about current solutions is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline & Budget -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">5</span>
+          Timeline & Budget
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="timeline">
+            When do you need this solution implemented? <span class="required">*</span>
+          </label>
+          <textarea
+            id="timeline"
+            class="form-control"
+            formControlName="timeline"
+            placeholder="Include any specific deadlines, seasonal considerations, or business drivers for timing."></textarea>
+          <div class="form-help">Example: "We need this ready for our busy season starting in March" or "We have compliance requirements by end of year"</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('timeline')?.invalid && worksheetForm.get('timeline')?.touched">
+            Timeline information is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="budget">
+            What's your budget range for this project? <span class="required">*</span>
+          </label>
+          <textarea
+            id="budget"
+            class="form-control"
+            formControlName="budget"
+            placeholder="Include both initial development and ongoing costs you're prepared to invest."></textarea>
+          <div class="form-help">Be honest about your budget constraints. This helps determine the right approach (off-the-shelf, custom, or hybrid).</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('budget')?.invalid && worksheetForm.get('budget')?.touched">
+            Budget information is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Metrics -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">6</span>
+          Success Metrics
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="successMetrics">
+            How will you measure success? What would make this project worth the investment? <span class="required">*</span>
+          </label>
+          <textarea
+            id="successMetrics"
+            class="form-control"
+            formControlName="successMetrics"
+            placeholder="Be specific about measurable outcomes - time savings, cost reductions, revenue increases, etc."></textarea>
+          <div class="form-help">Example: "Save 10 hours per week on data entry" or "Reduce order processing errors by 80%" or "Handle 50% more customers with same staff"</div>
+          <div class="validation-error" *ngIf="worksheetForm.get('successMetrics')?.invalid && worksheetForm.get('successMetrics')?.touched">
+            Success metrics are required
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <span class="section-number">7</span>
+          Additional Information
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="additionalInfo">
+            Anything else we should know?
+          </label>
+          <textarea
+            id="additionalInfo"
+            class="form-control"
+            formControlName="additionalInfo"
+            placeholder="Technical constraints, integration requirements, compliance needs, team size, etc."></textarea>
+          <div class="form-help">Optional - but helpful for providing more targeted recommendations</div>
+        </div>
+      </div>
+
+      <!-- Error/Success Messages -->
+      <div class="error-message" *ngIf="showErrorMessage">
+        Please fill in all required fields before submitting.
+      </div>
+
+      <div class="success-message" *ngIf="showSuccessMessage">
+        <h4>Thank You!</h4>
+        <p>Your worksheet has been submitted successfully. We'll review your requirements and get back to you within 2 business days.</p>
+        <p>In the meantime, you might want to review our <a href="/guide" (click)="trackGuideNavigation()">Decision Guide</a> for additional insights.</p>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="isSubmitting || showSuccessMessage">
+          <span class="loading-spinner" *ngIf="isSubmitting"></span>
+          {{ isSubmitting ? 'Submitting...' : 'Submit Worksheet' }}
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="resetForm()"
+          *ngIf="!isSubmitting && !showSuccessMessage">
+          Reset Form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,402 @@
+.guide-overview-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header Section */
+.guide-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #007acc 0%, #005c99 100%);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 122, 204, 0.2);
+}
+
+.guide-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.guide-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.guide-author {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Purpose Section */
+.purpose-section {
+  margin-bottom: 50px;
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 12px;
+  border-left: 5px solid #007acc;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #007acc;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.purpose-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Key Highlights Section */
+.highlights-section {
+  margin-bottom: 50px;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.highlight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-header {
+  font-size: 1.4rem;
+  color: #007acc;
+  margin-bottom: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  margin-right: 12px;
+}
+
+.highlight-content {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.highlight-visual {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #007acc;
+}
+
+.cost-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.cost-item {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.ai-stat {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.decision-points {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.decision-points li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+  color: #555;
+}
+
+.decision-points li:before {
+  content: "✓";
+  color: #28a745;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Call to Action Section */
+.cta-section {
+  background: linear-gradient(135deg, #007acc 0%, #005c99 100%);
+  color: white;
+  padding: 50px 40px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 50px;
+  box-shadow: 0 8px 25px rgba(0, 122, 204, 0.2);
+}
+
+.cta-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.primary-cta {
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.btn-primary {
+  background: white;
+  color: #007acc;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #005c99;
+}
+
+.btn-large {
+  padding: 20px 40px;
+  font-size: 1.2rem;
+}
+
+.secondary-cta {
+  margin-bottom: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondary-cta p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #007acc;
+  transform: translateY(-2px);
+}
+
+.additional-resources {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.additional-resources p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.additional-resources a {
+  color: white;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.additional-resources a:hover {
+  opacity: 0.8;
+}
+
+/* Footer Section */
+.page-footer {
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  border-top: 3px solid #007acc;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  color: #007acc;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.page-footer p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.page-footer a {
+  color: #007acc;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.page-footer a:hover {
+  color: #005c99;
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  .guide-overview-container {
+    padding: 15px;
+  }
+
+  .guide-header {
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+
+  .guide-main-title {
+    font-size: 2rem;
+  }
+
+  .guide-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .guide-author {
+    font-size: 1rem;
+  }
+
+  .purpose-section, .page-footer {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .purpose-content p {
+    font-size: 1rem;
+  }
+
+  .highlight-card {
+    padding: 20px;
+  }
+
+  .highlight-header {
+    font-size: 1.2rem;
+  }
+
+  .highlight-content {
+    font-size: 0.95rem;
+  }
+
+  .cta-section {
+    padding: 35px 25px;
+  }
+
+  .cta-title {
+    font-size: 1.6rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+  }
+
+  .btn-large {
+    padding: 18px 30px;
+    font-size: 1.1rem;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .cost-ranges {
+    flex-direction: column;
+  }
+
+  .cost-item {
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cost-ranges {
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 1024px) {
+  .guide-overview-container {
+    padding: 30px;
+  }
+
+  .guide-header {
+    padding: 60px 40px;
+  }
+
+  .highlights-grid {
+    gap: 50px;
+  }
+}

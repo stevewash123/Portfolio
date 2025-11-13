@@ -18,26 +18,54 @@
           Download these complimentary guides to help streamline your technology decisions
         </p>
 
-        <div class="pdf-downloads" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding-bottom: 20px;">
-          <a href="assets/System-Chaos-to-Clarity-Decision-Guide.pdf" download="Technical-Decision-Guide-for-Growing-Businesses.pdf" target="_blank" title="Technical Decision Guide for Growing Businesses" (click)="trackTechGuideDownload()">
-            <button nz-button nzType="primary" nzSize="large" style="display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 32px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
-              <span nz-icon nzType="download" style="font-size: 18px;"></span>
-              <span style="text-align: left;">
-                <div style="font-weight: 600; font-size: 16px;">Technical Decision Guide</div>
-                <div style="font-size: 13px; opacity: 0.9;">For Growing Businesses • FREE PDF</div>
-              </span>
-            </button>
-          </a>
+        <div class="resource-cards" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; padding-bottom: 20px;">
+          <!-- Decision Guide Card -->
+          <div class="resource-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 12px; padding: 24px; max-width: 340px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <div style="text-align: center; margin-bottom: 16px;">
+              <h4 style="color: white; font-size: 18px; font-weight: 600; margin: 0 0 8px;">Technical Decision Guide</h4>
+              <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin: 0;">For Growing Businesses • FREE</p>
+            </div>
 
-          <a href="assets/Project-Specification-Worksheet.pdf" download="Project-Specification-Worksheet.pdf" target="_blank" title="Project Specification Worksheet" (click)="trackProjectSpecDownload()">
-            <button nz-button nzType="default" nzSize="large" style="display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 32px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
-              <span nz-icon nzType="download" style="font-size: 18px;"></span>
-              <span style="text-align: left;">
-                <div style="font-weight: 600; font-size: 16px;">Project Specification Worksheet</div>
-                <div style="font-size: 13px; opacity: 0.9;">Planning Template • FREE PDF</div>
-              </span>
-            </button>
-          </a>
+            <div class="resource-options" style="display: flex; gap: 12px;">
+              <a href="/guide" style="flex: 1;">
+                <button nz-button nzType="primary" nzSize="default" nzBlock style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                  <span nz-icon nzType="read" style="font-size: 16px;"></span>
+                  <span>Read Guide Overview →</span>
+                </button>
+              </a>
+
+              <a href="assets/System-Chaos-to-Clarity-Decision-Guide.pdf" target="_blank" (click)="trackTechGuideDownload()">
+                <button nz-button nzType="default" nzSize="default" style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 0.3);">
+                  <span nz-icon nzType="file-pdf" style="font-size: 16px; color: #dc3545;"></span>
+                  <span style="color: #333;">PDF</span>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Worksheet Card -->
+          <div class="resource-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 12px; padding: 24px; max-width: 340px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <div style="text-align: center; margin-bottom: 16px;">
+              <h4 style="color: white; font-size: 18px; font-weight: 600; margin: 0 0 8px;">Project Specification Worksheet</h4>
+              <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin: 0;">Planning Template • FREE</p>
+            </div>
+
+            <div class="resource-options" style="display: flex; gap: 12px;">
+              <a href="/worksheet" style="flex: 1;">
+                <button nz-button nzType="primary" nzSize="default" nzBlock style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                  <span nz-icon nzType="form" style="font-size: 16px;"></span>
+                  <span>Interactive Form</span>
+                </button>
+              </a>
+
+              <a href="assets/Project-Specification-Worksheet.pdf" target="_blank" (click)="trackProjectSpecDownload()">
+                <button nz-button nzType="default" nzSize="default" style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 0.3);">
+                  <span nz-icon nzType="file-pdf" style="font-size: 16px; color: #dc3545;"></span>
+                  <span style="color: #333;">PDF</span>
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
