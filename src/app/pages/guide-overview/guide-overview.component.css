@@ -158,7 +158,7 @@
   margin-right: 10px;
 }
 
-/* Horizontal Bar Chart Styles */
+/* Chart.js Bar Chart Styles */
 .cost-chart-container {
   margin-top: 20px;
 }
@@ -171,162 +171,13 @@
   text-align: center;
 }
 
-.horizontal-bar-chart {
-  position: relative;
+.chart-wrapper {
   background: white;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;
-}
-
-.chart-background {
-  position: absolute;
-  top: 20px;
-  left: 150px;
-  right: 20px;
-  bottom: 20px;
-  border-left: 2px solid #e9ecef;
-  border-bottom: 2px solid #e9ecef;
-}
-
-.chart-grid {
-  position: relative;
-  height: 100%;
-  display: flex;
-}
-
-.grid-line {
-  border-right: 1px solid #f8f9fa;
-  position: relative;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  padding-bottom: 5px;
-  font-size: 0.8rem;
-  color: #666;
-}
-
-/* Custom grid spacing for better $0-$20K resolution */
-.grid-0 { flex: 0; width: 0; border-left: 2px solid #e9ecef; }
-.grid-5k { flex: 1; }
-.grid-10k { flex: 1; }
-.grid-15k { flex: 1; }
-.grid-20k { flex: 1; }
-.grid-30k { flex: 0.7; }
-.grid-break {
-  flex: 0.3;
-  border-right: none;
-  border-left: 2px dashed #ccc;
-  border-right: 2px dashed #ccc;
-}
-.grid-50k { flex: 0.5; }
-
-.grid-line:after {
-  content: attr(data-value);
-  position: absolute;
-  bottom: -20px;
-  font-size: 0.75rem;
-  color: #888;
-}
-
-.grid-break:after {
-  content: "//";
-  font-weight: bold;
-  color: #666;
-}
-
-.chart-bars {
-  position: relative;
-  z-index: 2;
-  padding-left: 150px;
-}
-
-.chart-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  height: 35px;
-}
-
-.chart-label {
-  position: absolute;
-  left: 0;
-  width: 140px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #333;
-  text-align: right;
-  padding-right: 10px;
-  box-sizing: border-box;
-  line-height: 1.2;
-  word-wrap: break-word;
-}
-
-.chart-bar-container {
-  flex: 1;
-  height: 25px;
-  position: relative;
-}
-
-.chart-bar {
-  height: 100%;
-  border-radius: 4px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 0.8rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.chart-bar:hover {
-  transform: scaleY(1.1);
-  z-index: 3;
-}
-
-/* Bar Colors and Positioning - Accurate Grid Alignment */
-/* Grid positions: $0=0%, $5K=18.2%, $10K=36.4%, $15K=54.5%, $20K=72.7%, $30K=85.5%, $50K+=100% */
-/* Total flex units: 0 + 1 + 1 + 1 + 1 + 0.7 + 0.3 + 0.5 = 5.5 */
-
-.small-automation {
-  background: linear-gradient(90deg, #28a745, #20c997);
-  margin-left: 3.6%; /* $1K = 1/5 of way to $5K = 18.2% * 0.2 = 3.6% */
-  width: 14.6%; /* $1K to $5K = 3.6% to 18.2% = 14.6% width */
-}
-
-.forms-data {
-  background: linear-gradient(90deg, #007acc, #0056b3);
-  margin-left: 10.9%; /* $3K = 3/5 of way to $5K = 18.2% * 0.6 = 10.9% */
-  width: 18.2%; /* $3K to $8K = 10.9% to 29.1% = 18.2% width */
-  /* $8K = $5K + 3/5 to $10K = 18.2% + (36.4%-18.2%) * 0.6 = 18.2% + 10.9% = 29.1% */
-}
-
-.workflow-systems {
-  background: linear-gradient(90deg, #6f42c1, #5a359a);
-  margin-left: 18.2%; /* $5K = exactly at grid line = 18.2% */
-  width: 54.5%; /* $5K to $20K = 18.2% to 72.7% = 54.5% width */
-}
-
-.full-applications {
-  background: linear-gradient(90deg, #fd7e14, #e55b0f);
-  margin-left: 36.4%; /* $10K = exactly at grid line = 36.4% */
-  width: 63.6%; /* $10K to $50K+ = 36.4% to 100% = 63.6% width */
-}
-
-.off-shelf-suite {
-  background: linear-gradient(90deg, #dc3545, #bd2130);
-  margin-left: 54.5%; /* $15K = exactly at grid line = 54.5% */
-  width: 31.0%; /* $15K to $35K = 54.5% to 85.5% = 31.0% width */
-  /* $35K = $30K + 1/2 to break = 85.5% + 0% = 85.5% (since it ends right at $30K mark, not in break) */
-}
-
-.bar-label {
-  white-space: nowrap;
-  font-size: 0.75rem;
+  height: 300px;
 }
 
 /* Chart Examples Section */
@@ -375,37 +226,9 @@
 
 /* Mobile Responsive Chart */
 @media (max-width: 768px) {
-  .horizontal-bar-chart {
+  .chart-wrapper {
     padding: 15px;
-  }
-
-  .chart-background {
-    left: 110px;
-  }
-
-  .chart-bars {
-    padding-left: 110px;
-  }
-
-  .chart-label {
-    width: 100px;
-    font-size: 0.8rem;
-    padding-right: 8px;
-    line-height: 1.1;
-  }
-
-  .chart-row {
-    margin-bottom: 12px;
-    height: 30px;
-  }
-
-  .chart-bar {
-    height: 20px;
-    font-size: 0.7rem;
-  }
-
-  .grid-line:after {
-    font-size: 0.7rem;
+    height: 280px;
   }
 
   .example-list li {
@@ -414,23 +237,9 @@
 }
 
 @media (max-width: 480px) {
-  .chart-background {
-    left: 80px;
-  }
-
-  .chart-bars {
-    padding-left: 80px;
-  }
-
-  .chart-label {
-    width: 70px;
-    font-size: 0.75rem;
-    padding-right: 5px;
-    line-height: 1.0;
-  }
-
-  .bar-label {
-    font-size: 0.65rem;
+  .chart-wrapper {
+    height: 250px;
+    padding: 10px;
   }
 }
 
