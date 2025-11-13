@@ -158,6 +158,250 @@
   margin-right: 10px;
 }
 
+/* Horizontal Bar Chart Styles */
+.cost-chart-container {
+  margin-top: 20px;
+}
+
+.chart-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #007acc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.horizontal-bar-chart {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+.chart-background {
+  position: absolute;
+  top: 20px;
+  left: 180px;
+  right: 20px;
+  bottom: 20px;
+  border-left: 2px solid #e9ecef;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.chart-grid {
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.grid-line {
+  flex: 1;
+  border-right: 1px solid #f8f9fa;
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding-bottom: 5px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.grid-line:after {
+  content: attr(data-value);
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.chart-bars {
+  position: relative;
+  z-index: 2;
+  padding-left: 180px;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  height: 35px;
+}
+
+.chart-label {
+  position: absolute;
+  left: 0;
+  width: 170px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.chart-bar-container {
+  flex: 1;
+  height: 25px;
+  position: relative;
+}
+
+.chart-bar {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.chart-bar:hover {
+  transform: scaleY(1.1);
+  z-index: 3;
+}
+
+/* Bar Colors and Positioning */
+.small-automation {
+  background: linear-gradient(90deg, #28a745, #20c997);
+  margin-left: 2%;
+  width: 4%;
+}
+
+.forms-data {
+  background: linear-gradient(90deg, #007acc, #0056b3);
+  margin-left: 6%;
+  width: 10%;
+}
+
+.workflow-systems {
+  background: linear-gradient(90deg, #6f42c1, #5a359a);
+  margin-left: 10%;
+  width: 30%;
+}
+
+.full-applications {
+  background: linear-gradient(90deg, #fd7e14, #e55b0f);
+  margin-left: 20%;
+  width: 60%;
+}
+
+.off-shelf-suite {
+  background: linear-gradient(90deg, #dc3545, #bd2130);
+  margin-left: 30%;
+  width: 40%;
+}
+
+.bar-label {
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+
+/* Chart Examples Section */
+.chart-examples {
+  margin-top: 25px;
+}
+
+.chart-examples h5 {
+  color: #007acc;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.example-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.example-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f8f9fa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.example-list li:last-child {
+  border-bottom: none;
+}
+
+.chart-note {
+  background-color: #e7f3ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 15px;
+}
+
+.chart-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #0c5460;
+  font-style: italic;
+}
+
+/* Mobile Responsive Chart */
+@media (max-width: 768px) {
+  .horizontal-bar-chart {
+    padding: 15px;
+  }
+
+  .chart-background {
+    left: 120px;
+  }
+
+  .chart-bars {
+    padding-left: 120px;
+  }
+
+  .chart-label {
+    width: 110px;
+    font-size: 0.8rem;
+  }
+
+  .chart-row {
+    margin-bottom: 12px;
+    height: 30px;
+  }
+
+  .chart-bar {
+    height: 20px;
+    font-size: 0.7rem;
+  }
+
+  .grid-line:after {
+    font-size: 0.7rem;
+  }
+
+  .example-list li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-background {
+    left: 90px;
+  }
+
+  .chart-bars {
+    padding-left: 90px;
+  }
+
+  .chart-label {
+    width: 80px;
+    font-size: 0.75rem;
+  }
+
+  .bar-label {
+    font-size: 0.65rem;
+  }
+}
+
 /* Call to Action Section */
 .cta-section {
   background: linear-gradient(135deg, #007acc 0%, #005c99 100%);
