@@ -183,7 +183,7 @@
 .chart-background {
   position: absolute;
   top: 20px;
-  left: 100px;
+  left: 150px;
   right: 20px;
   bottom: 20px;
   border-left: 2px solid #e9ecef;
@@ -239,7 +239,7 @@
 .chart-bars {
   position: relative;
   z-index: 2;
-  padding-left: 100px;
+  padding-left: 150px;
 }
 
 .chart-row {
@@ -252,13 +252,15 @@
 .chart-label {
   position: absolute;
   left: 0;
-  width: 90px;
+  width: 140px;
   font-size: 0.9rem;
   font-weight: 500;
   color: #333;
   text-align: right;
   padding-right: 10px;
   box-sizing: border-box;
+  line-height: 1.2;
+  word-wrap: break-word;
 }
 
 .chart-bar-container {
@@ -375,17 +377,18 @@
   }
 
   .chart-background {
-    left: 70px;
+    left: 110px;
   }
 
   .chart-bars {
-    padding-left: 70px;
+    padding-left: 110px;
   }
 
   .chart-label {
-    width: 60px;
+    width: 100px;
     font-size: 0.8rem;
     padding-right: 8px;
+    line-height: 1.1;
   }
 
   .chart-row {
@@ -409,17 +412,18 @@
 
 @media (max-width: 480px) {
   .chart-background {
-    left: 50px;
+    left: 80px;
   }
 
   .chart-bars {
-    padding-left: 50px;
+    padding-left: 80px;
   }
 
   .chart-label {
-    width: 40px;
-    font-size: 0.7rem;
+    width: 70px;
+    font-size: 0.75rem;
     padding-right: 5px;
+    line-height: 1.0;
   }
 
   .bar-label {
