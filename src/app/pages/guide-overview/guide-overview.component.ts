@@ -43,17 +43,18 @@ export class GuideOverviewComponent {
     labels: ['Small Automation', 'Forms & Data Collection', 'Workflow Systems', 'Full Applications', 'Off-the-Shelf Suite'],
     datasets: [
       {
-        label: 'Cost Range',
-        data: [
-          { x: [1, 5], y: 0 },   // Small Automation: $1K-$5K
-          { x: [3, 8], y: 1 },   // Forms & Data: $3K-$8K
-          { x: [5, 20], y: 2 },  // Workflow Systems: $5K-$20K
-          { x: [10, 50], y: 3 }, // Full Applications: $10K-$50K+
-          { x: [15, 35], y: 4 }  // Off-the-Shelf Suite: $15K-$35K
-        ],
+        label: 'Starting Point',
+        data: [1, 3, 5, 10, 15], // Minimum values
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        barPercentage: 0.7
+      },
+      {
+        label: 'Range',
+        data: [4, 5, 15, 40, 20], // Range spans (max - min)
         backgroundColor: ['#28a745', '#007acc', '#6f42c1', '#fd7e14', '#dc3545'],
         borderWidth: 0,
-        barPercentage: 0.6
+        barPercentage: 0.7
       }
     ]
   };
@@ -62,25 +63,11 @@ export class GuideOverviewComponent {
     indexAxis: 'y',
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false
-      },
-      tooltip: {
-        callbacks: {
-          label: (context) => {
-            const data = context.raw as { x: [number, number], y: number };
-            const min = data.x[0];
-            const max = data.x[1];
-            return `Cost Range: $${min}K - $${max}K`;
-          }
-        }
-      }
-    },
     scales: {
       x: {
         beginAtZero: true,
         max: 50,
+        stacked: true,
         ticks: {
           callback: function(value) {
             return '$' + value + 'K';
@@ -92,8 +79,33 @@ export class GuideOverviewComponent {
         }
       },
       y: {
+        stacked: true,
         grid: {
           display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        filter: function(tooltipItem) {
+          return tooltipItem.datasetIndex === 1; // Only show tooltip for visible range part
+        },
+        callbacks: {
+          label: (context) => {
+            const categoryIndex = context.dataIndex;
+            const ranges = [
+              { min: 1, max: 5 },   // Small Automation
+              { min: 3, max: 8 },   // Forms & Data Collection
+              { min: 5, max: 20 },  // Workflow Systems
+              { min: 10, max: 50 }, // Full Applications
+              { min: 15, max: 35 }  // Off-the-Shelf Suite
+            ];
+            const range = ranges[categoryIndex];
+            return `Cost Range: $${range.min}K - $${range.max}K${range.max === 50 ? '+' : ''}`;
+          }
         }
       }
     }
