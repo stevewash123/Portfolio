@@ -10,6 +10,7 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  BarController,
   Title as ChartTitle,
   Tooltip,
   Legend
@@ -21,6 +22,7 @@ Chart.register(
   CategoryScale,
   LinearScale,
   BarElement,
+  BarController,
   ChartTitle,
   Tooltip,
   Legend
