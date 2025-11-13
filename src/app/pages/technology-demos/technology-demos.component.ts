@@ -113,4 +113,12 @@ export class TechnologyDemosComponent {
     this.isModalVisible = false;
     this.selectedProject = null;
   }
+
+  openDemo(project: any): void {
+    if (project.liveDemo.startsWith('http')) {
+      window.open(project.liveDemo, '_blank');
+    } else {
+      this.router.navigate([project.liveDemo]);
+    }
+  }
 }

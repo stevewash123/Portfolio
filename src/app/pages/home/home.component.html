@@ -47,7 +47,7 @@
       <div nz-row [nzGutter]="[32, 32]" class="categories-grid">
         <!-- Business Applications Card -->
         <div nz-col [nzXs]="24" [nzSm]="12">
-          <nz-card class="category-card business-card" nzHoverable>
+          <nz-card class="category-card business-card" nzHoverable (click)="navigateToBusinessApps()">
             <div class="card-content">
               <div class="card-icon business-icon">
                 💼
@@ -73,7 +73,7 @@
 
         <!-- Technology Demos Card -->
         <div nz-col [nzXs]="24" [nzSm]="12">
-          <nz-card class="category-card tech-card" nzHoverable>
+          <nz-card class="category-card tech-card" nzHoverable (click)="navigateToTechDemos()">
             <div class="card-content">
               <div class="card-icon tech-icon">
                 🔧

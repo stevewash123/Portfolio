@@ -19,7 +19,7 @@
     <div class="section-container">
       <div nz-row [nzGutter]="[24, 24]" class="projects-grid">
         <div nz-col [nzXs]="24" [nzSm]="12" [nzLg]="8" *ngFor="let project of techProjects">
-          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable>
+          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable (click)="openDemo(project)">
             <ng-template #coverTemplate>
               <div class="project-image">
                 {{ getCategoryIcon(project.category) }}
@@ -28,7 +28,7 @@
             </ng-template>
 
             <ng-template #actionLive>
-              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'">
+              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'" (click)="$event.stopPropagation()">
                 <button nz-button nzType="primary" nzSize="small" style="width: 100%;">
                   <span nz-icon nzType="eye"></span>
                   Live Demo
@@ -37,7 +37,7 @@
             </ng-template>
 
             <ng-template #actionGithub>
-              <a [href]="project.github" target="_blank">
+              <a [href]="project.github" target="_blank" (click)="$event.stopPropagation()">
                 <button nz-button nzType="default" nzSize="small" style="width: 100%;">
                   <span nz-icon nzType="github"></span>
                   GitHub
@@ -46,7 +46,7 @@
             </ng-template>
 
             <ng-template #actionDetails>
-              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project)">
+              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project); $event.stopPropagation()">
                 <span nz-icon nzType="info-circle"></span>
                 Details
               </button>

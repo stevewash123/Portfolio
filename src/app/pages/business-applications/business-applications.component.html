@@ -19,7 +19,7 @@
     <div class="section-container">
       <div nz-row [nzGutter]="[32, 32]" class="projects-grid">
         <div nz-col [nzXs]="24" [nzSm]="12" *ngFor="let project of businessProjects">
-          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable>
+          <nz-card class="project-card simplified-card" [nzCover]="coverTemplate" [nzActions]="[actionLive, actionGithub, actionDetails]" nzHoverable (click)="openDemo(project)">
             <ng-template #coverTemplate>
               <div class="project-image">
                 {{ getCategoryIcon(project.category) }}
@@ -28,20 +28,20 @@
             </ng-template>
 
             <ng-template #actionLive>
-              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'" *ngIf="project.liveDemo !== '#'">
+              <a [href]="project.liveDemo" [target]="project.liveDemo.startsWith('http') ? '_blank' : '_self'" *ngIf="project.liveDemo !== '#'" (click)="$event.stopPropagation()">
                 <button nz-button nzType="primary" nzSize="small" style="width: 100%;">
                   <span nz-icon nzType="eye"></span>
                   Live Demo
                 </button>
               </a>
-              <button *ngIf="project.liveDemo === '#'" nz-button nzType="primary" nzSize="small" style="width: 100%;" disabled>
+              <button *ngIf="project.liveDemo === '#'" nz-button nzType="primary" nzSize="small" style="width: 100%;" disabled (click)="$event.stopPropagation()">
                 <span nz-icon nzType="clock-circle"></span>
                 Coming Soon
               </button>
             </ng-template>
 
             <ng-template #actionGithub>
-              <a [href]="project.github" target="_blank">
+              <a [href]="project.github" target="_blank" (click)="$event.stopPropagation()">
                 <button nz-button nzType="default" nzSize="small" style="width: 100%;">
                   <span nz-icon nzType="github"></span>
                   GitHub
@@ -50,7 +50,7 @@
             </ng-template>
 
             <ng-template #actionDetails>
-              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project)">
+              <button nz-button nzType="dashed" nzSize="small" style="width: 100%;" (click)="showDetails(project); $event.stopPropagation()">
                 <span nz-icon nzType="info-circle"></span>
                 Details
               </button>
