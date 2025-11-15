@@ -148,26 +148,29 @@ Business Information:
 - Phone: ${data.phone || 'Not provided'}
 
 Project Details:
-1. Current State Assessment:
-${data.currentState}
+1. Current Process Description:
+${data.currentProcess}
 
-2. Problem Statement:
-${data.problemStatement}
+2. Ideal Process Description:
+${data.idealProcess}
 
-3. Current Solutions & Research:
-${data.currentSolutions}
+3. User Types & Roles:
+${data.userTypes}
 
-4. Timeline:
-${data.timeline}
+4. Data Tracking Requirements:
+${data.dataTracking}
 
-5. Budget:
-${data.budget}
+5. Core Workflows:
+${data.coreWorkflows}
 
-6. Success Metrics:
-${data.successMetrics}
+6. Reports & Outputs:
+${data.reportsOutputs}
 
-7. Additional Information:
-${data.additionalInfo || 'None provided'}${consultationNote}
+7. Existing Systems:
+${data.existingSystems}
+
+8. Timeline & Budget:
+${data.timelineBudget}${consultationNote}
 
 ---
 Submitted via Portfolio Website
@@ -188,26 +191,29 @@ Business Information:
 - Phone: ${data.phone || 'Not provided'}
 
 Project Details:
-1. Current State Assessment:
-${data.currentState}
+1. Current Process Description:
+${data.currentProcess}
 
-2. Problem Statement:
-${data.problemStatement}
+2. Ideal Process Description:
+${data.idealProcess}
 
-3. Current Solutions & Research:
-${data.currentSolutions}
+3. User Types & Roles:
+${data.userTypes}
 
-4. Timeline:
-${data.timeline}
+4. Data Tracking Requirements:
+${data.dataTracking}
 
-5. Budget:
-${data.budget}
+5. Core Workflows:
+${data.coreWorkflows}
 
-6. Success Metrics:
-${data.successMetrics}
+6. Reports & Outputs:
+${data.reportsOutputs}
 
-7. Additional Information:
-${data.additionalInfo || 'None provided'}
+7. Existing Systems:
+${data.existingSystems}
+
+8. Timeline & Budget:
+${data.timelineBudget}
 
 ---
 What happens next?
