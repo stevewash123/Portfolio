@@ -178,6 +178,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;
   height: 300px;
+  position: relative;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 
 /* Chart Examples Section */
@@ -227,19 +229,59 @@
 /* Mobile Responsive Chart */
 @media (max-width: 768px) {
   .chart-wrapper {
-    padding: 15px;
-    height: 280px;
+    padding: 10px;
+    height: 320px; /* Increased height for better mobile viewing */
+    margin: 0 -10px 25px -10px; /* Extend to edge of parent */
+  }
+
+  .chart-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
   }
 
   .example-list li {
     font-size: 0.85rem;
+    padding: 6px 0;
+  }
+
+  .chart-examples {
+    padding: 0 10px;
+  }
+
+  .chart-note {
+    margin: 15px 10px 0 10px;
   }
 }
 
 @media (max-width: 480px) {
   .chart-wrapper {
-    height: 250px;
+    height: 280px;
+    padding: 8px;
+    margin: 0 -15px 20px -15px; /* Extend further on smaller screens */
+  }
+
+  .chart-title {
+    font-size: 0.9rem;
+    padding: 0 15px;
+  }
+
+  .chart-examples {
+    padding: 0 15px;
+  }
+
+  .chart-note {
+    margin: 10px 15px 0 15px;
     padding: 10px;
+  }
+
+  .chart-note p {
+    font-size: 0.8rem;
+  }
+
+  .example-list li {
+    font-size: 0.8rem;
+    line-height: 1.3;
   }
 }
 

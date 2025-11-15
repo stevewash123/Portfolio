@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
@@ -63,6 +63,18 @@ export class GuideOverviewComponent {
     indexAxis: 'y',
     responsive: true,
     maintainAspectRatio: false,
+    interaction: {
+      intersect: false,
+      mode: 'index'
+    },
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 5,
+        bottom: 5
+      }
+    },
     scales: {
       x: {
         beginAtZero: true,
@@ -71,15 +83,39 @@ export class GuideOverviewComponent {
         ticks: {
           callback: function(value) {
             return '$' + value + 'K';
+          },
+          font: {
+            size: window.innerWidth < 768 ? 10 : 12
           }
         },
         title: {
           display: true,
-          text: 'Cost Range (USD)'
+          text: 'Cost Range (USD)',
+          font: {
+            size: window.innerWidth < 768 ? 11 : 13
+          }
+        },
+        grid: {
+          display: true,
+          color: 'rgba(0,0,0,0.1)'
         }
       },
       y: {
         stacked: true,
+        ticks: {
+          font: {
+            size: window.innerWidth < 768 ? 9 : 11
+          },
+          callback: function(value, index) {
+            const labels = ['Small\nAutomation', 'Forms &\nData Collection', 'Workflow\nSystems', 'Full\nApplications', 'Off-the-Shelf\nSuite'];
+            if (window.innerWidth < 768) {
+              // Shorter labels on mobile
+              const shortLabels = ['Small Auto', 'Forms & Data', 'Workflows', 'Full Apps', 'Off-the-Shelf'];
+              return shortLabels[index] || labels[index];
+            }
+            return labels[index];
+          }
+        },
         grid: {
           display: false
         }
@@ -93,7 +129,17 @@ export class GuideOverviewComponent {
         filter: function(tooltipItem) {
           return tooltipItem.datasetIndex === 1; // Only show tooltip for visible range part
         },
+        titleFont: {
+          size: window.innerWidth < 768 ? 12 : 14
+        },
+        bodyFont: {
+          size: window.innerWidth < 768 ? 11 : 13
+        },
         callbacks: {
+          title: function(context) {
+            const fullLabels = ['Small Automation', 'Forms & Data Collection', 'Workflow Systems', 'Full Applications', 'Off-the-Shelf Suite'];
+            return fullLabels[context[0].dataIndex];
+          },
           label: (context) => {
             const categoryIndex = context.dataIndex;
             const ranges = [
@@ -137,6 +183,34 @@ export class GuideOverviewComponent {
 
     // Track page navigation
     this.ga.trackNavigation('/guide');
+
+    // Update chart options for current screen size
+    this.updateChartForScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    // Update chart configuration when window is resized
+    this.updateChartForScreenSize();
+  }
+
+  private updateChartForScreenSize() {
+    const isMobile = window.innerWidth < 768;
+
+    // Update chart options for responsive behavior
+    if (this.barChartOptions?.scales?.['x']?.ticks) {
+      this.barChartOptions.scales['x'].ticks.font = { size: isMobile ? 10 : 12 };
+    }
+    if (this.barChartOptions?.scales?.['x']?.title) {
+      this.barChartOptions.scales['x'].title.font = { size: isMobile ? 11 : 13 };
+    }
+    if (this.barChartOptions?.scales?.['y']?.ticks) {
+      this.barChartOptions.scales['y'].ticks.font = { size: isMobile ? 9 : 11 };
+    }
+    if (this.barChartOptions?.plugins?.tooltip) {
+      this.barChartOptions.plugins.tooltip.titleFont = { size: isMobile ? 12 : 14 };
+      this.barChartOptions.plugins.tooltip.bodyFont = { size: isMobile ? 11 : 13 };
+    }
   }
 
   trackPdfDownload() {
