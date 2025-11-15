@@ -102,28 +102,31 @@ export class GuideOverviewComponent {
       },
       y: {
         stacked: true,
-        ticks: {
-          font: {
-            size: window.innerWidth < 768 ? 9 : 11
-          },
-          callback: function(value, index) {
-            const labels = ['Small\nAutomation', 'Forms &\nData Collection', 'Workflow\nSystems', 'Full\nApplications', 'Off-the-Shelf\nSuite'];
-            if (window.innerWidth < 768) {
-              // Shorter labels on mobile
-              const shortLabels = ['Small Auto', 'Forms & Data', 'Workflows', 'Full Apps', 'Off-the-Shelf'];
-              return shortLabels[index] || labels[index];
-            }
-            return labels[index];
-          }
-        },
-        grid: {
-          display: false
-        }
+        display: false  // Hide Y-axis labels completely
       }
     },
     plugins: {
       legend: {
-        display: false
+        display: true,
+        position: 'bottom',
+        labels: {
+          generateLabels: function(chart) {
+            const labels = ['Small Automation', 'Forms & Data Collection', 'Workflow Systems', 'Full Applications', 'Off-the-Shelf Suite'];
+            const colors = ['#28a745', '#007acc', '#6f42c1', '#fd7e14', '#dc3545'];
+            return labels.map((label, index) => ({
+              text: label,
+              fillStyle: colors[index],
+              strokeStyle: colors[index],
+              lineWidth: 0,
+              pointStyle: 'rect'
+            }));
+          },
+          usePointStyle: true,
+          padding: window.innerWidth < 768 ? 10 : 15,
+          font: {
+            size: window.innerWidth < 768 ? 10 : 12
+          }
+        }
       },
       tooltip: {
         filter: function(tooltipItem) {
@@ -204,8 +207,10 @@ export class GuideOverviewComponent {
     if (this.barChartOptions?.scales?.['x']?.title) {
       this.barChartOptions.scales['x'].title.font = { size: isMobile ? 11 : 13 };
     }
-    if (this.barChartOptions?.scales?.['y']?.ticks) {
-      this.barChartOptions.scales['y'].ticks.font = { size: isMobile ? 9 : 11 };
+    // Update legend font size
+    if (this.barChartOptions?.plugins?.legend?.labels) {
+      this.barChartOptions.plugins.legend.labels.font = { size: isMobile ? 10 : 12 };
+      this.barChartOptions.plugins.legend.labels.padding = isMobile ? 10 : 15;
     }
     if (this.barChartOptions?.plugins?.tooltip) {
       this.barChartOptions.plugins.tooltip.titleFont = { size: isMobile ? 12 : 14 };
