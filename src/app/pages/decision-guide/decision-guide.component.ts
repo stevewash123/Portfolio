@@ -15,7 +15,7 @@ export class DecisionGuideComponent {
   constructor(private ga: GoogleAnalyticsService) {}
 
   ngOnInit() {
-    this.ga.trackNavigation('/guide');
+    this.ga.trackNavigation('/chaos2clarity');
   }
 
   trackPdfDownload() {

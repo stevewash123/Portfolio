@@ -1,0 +1,151 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">MicroSaaS Builders</h1>
+      <h2 class="hero-subtitle">Software Solutions for Small and Growing Businesses</h2>
+      <p class="hero-tagline">Build it. Own it. Scale without limits.</p>
+      <p class="hero-description">Fast, AI-assisted development at prices small businesses can afford</p>
+
+      <div class="hero-ctas">
+        <button nz-button nzType="primary" nzSize="large" class="cta-primary" (click)="navigateToPortfolio()">
+          View Portfolio
+        </button>
+        <button nz-button nzType="default" nzSize="large" class="cta-secondary" (click)="openCalendly()">
+          Schedule Free Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+  <div class="section-content">
+    <h2 class="section-title">Services Offered</h2>
+
+    <nz-row [nzGutter]="[24, 24]">
+      <nz-col nzXs="24" nzSm="12" nzLg="6" *ngFor="let service of services">
+        <nz-card class="service-card" [nzBodyStyle]="{ padding: '24px' }">
+          <div class="service-icon">
+            <i nz-icon [nzType]="service.icon" nzTheme="outline"></i>
+          </div>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+          <div class="service-tags">
+            <nz-tag *ngFor="let tag of service.tags" class="tech-tag">{{ tag }}</nz-tag>
+          </div>
+        </nz-card>
+      </nz-col>
+    </nz-row>
+  </div>
+</section>
+
+<!-- Free Resources Section -->
+<section class="resources-section">
+  <div class="section-content">
+    <h2 class="section-title">Free Resources for Your Business</h2>
+
+    <nz-row [nzGutter]="[24, 24]">
+      <nz-col nzXs="24" nzSm="12">
+        <nz-card class="resource-card gradient-card-purple" [nzBodyStyle]="{ padding: '32px' }">
+          <div class="resource-content">
+            <h3 class="resource-title">Technical Decision Guide for Growing Businesses</h3>
+            <p class="resource-description">
+              A comprehensive guide to help business owners make informed decisions about software development,
+              technology choices, and project planning.
+            </p>
+            <div class="resource-actions">
+              <button nz-button nzType="primary" class="resource-btn" (click)="navigateToRoute('/chaos2clarity')">
+                <i nz-icon nzType="eye" nzTheme="outline"></i>
+                View Guide
+              </button>
+              <a href="assets/Technical-Decision-Guide.pdf" target="_blank" class="download-link">
+                <i nz-icon nzType="download" nzTheme="outline"></i>
+                Download PDF
+              </a>
+            </div>
+          </div>
+        </nz-card>
+      </nz-col>
+
+      <nz-col nzXs="24" nzSm="12">
+        <nz-card class="resource-card gradient-card-blue" [nzBodyStyle]="{ padding: '32px' }">
+          <div class="resource-content">
+            <h3 class="resource-title">Project Specification Worksheet</h3>
+            <p class="resource-description">
+              An interactive worksheet to help you clearly define your project requirements,
+              scope, and expectations before starting development.
+            </p>
+            <div class="resource-actions">
+              <button nz-button nzType="primary" class="resource-btn" (click)="navigateToRoute('/worksheet')">
+                <i nz-icon nzType="form" nzTheme="outline"></i>
+                Complete Worksheet
+              </button>
+              <a href="assets/Project-Specification-Worksheet.pdf" target="_blank" class="download-link">
+                <i nz-icon nzType="download" nzTheme="outline"></i>
+                Download PDF
+              </a>
+            </div>
+          </div>
+        </nz-card>
+      </nz-col>
+    </nz-row>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-section">
+  <div class="section-content">
+    <h2 class="section-title">Why Work With MicroSaaS Builders</h2>
+
+    <nz-row [nzGutter]="[24, 24]">
+      <nz-col nzXs="24" nzSm="12" nzLg="6" *ngFor="let item of whyChooseUs">
+        <div class="why-item">
+          <div class="why-icon">
+            <i nz-icon [nzType]="item.icon" nzTheme="outline"></i>
+          </div>
+          <h3 class="why-title">{{ item.title }}</h3>
+          <p class="why-description">{{ item.description }}</p>
+        </div>
+      </nz-col>
+    </nz-row>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="section-content">
+    <div class="contact-content">
+      <h2 class="section-title">Ready to Start Your Project?</h2>
+      <p class="contact-subtitle">
+        Let's discuss how we can turn your business challenges into software solutions.
+      </p>
+
+      <div class="contact-actions">
+        <button nz-button nzType="primary" nzSize="large" (click)="navigateToContact()">
+          <i nz-icon nzType="mail" nzTheme="outline"></i>
+          Get in Touch
+        </button>
+        <button nz-button nzType="default" nzSize="large" (click)="openCalendly()">
+          <i nz-icon nzType="calendar" nzTheme="outline"></i>
+          Schedule Call
+        </button>
+      </div>
+
+      <div class="contact-info">
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:steve@microsaasbuilders.com">steve@microsaasbuilders.com</a>
+        </p>
+        <p>
+          <strong>Location:</strong> Philadelphia, PA | <strong>Serving:</strong> US & Canada
+        </p>
+        <p>
+          <strong>Response Time:</strong> Within 24 hours
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

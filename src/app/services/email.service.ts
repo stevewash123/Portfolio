@@ -39,7 +39,7 @@ export class EmailService {
     console.log('Sending worksheet data:', data);
 
     const templateParams = {
-      to_email: 'stevewash123@gmail.com',
+      to_email: 'steve@microsaasbuilders.com',
       to_name: 'Steve Wash',
       business_name: data.businessName,
       contact_name: data.contactName,

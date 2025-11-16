@@ -2,10 +2,18 @@
   <!-- Header Section -->
   <section class="header-section">
     <div class="header-content">
-      <button nz-button nzType="text" nzSize="large" class="back-button" (click)="goBack()">
-        <span nz-icon nzType="arrow-left"></span>
-        Back to Portfolio
-      </button>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <button nz-button nzType="text" nzSize="large" class="back-button" (click)="goBack()">
+          <span nz-icon nzType="arrow-left"></span>
+          Back to Portfolio
+        </button>
+        <a href="/business-applications">
+          <button nz-button nzType="text" nzSize="large" class="nav-button">
+            <span nz-icon nzType="appstore"></span>
+            Business Applications
+          </button>
+        </a>
+      </div>
       <h1 class="page-title">Technology Demos</h1>
       <p class="page-subtitle">
         Technical demonstrations showcasing specific technologies, algorithms, and development patterns.
@@ -138,6 +146,37 @@
           <h3>Data Visualization</h3>
           <p>Interactive charts and dashboards with real-time data streaming</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Footer Section -->
+  <section class="footer-section" id="contact">
+    <div class="footer-content">
+      <h2 style="color: white;">Let's Build Something Amazing Together</h2>
+      <p>I'm always interested in discussing new opportunities and innovative projects.</p>
+
+      <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+        <a href="/">
+          <button nz-button nzType="default" nzSize="large">
+            🏠
+            MicroSaaS Builders
+          </button>
+        </a>
+
+        <a href="mailto:steve@microsaasbuilders.com">
+          <button nz-button nzType="primary" nzSize="large">
+            📧
+            steve@microsaasbuilders.com
+          </button>
+        </a>
+
+        <a href="https://calendar.app.google/hFTk1RU3zLhHkLop6" target="_blank">
+          <button nz-button nzType="primary" nzSize="large">
+            📅
+            Schedule a Consultation
+          </button>
+        </a>
       </div>
     </div>
   </section>

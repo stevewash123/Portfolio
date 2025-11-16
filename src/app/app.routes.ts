@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
+    loadComponent: () => import('./pages/microsaas-landing/microsaas-landing.component').then(m => m.MicrosaaSLandingComponent)
+  },
+  {
+    path: 'portfolio',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
   {
@@ -15,7 +18,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/technology-demos/technology-demos.component').then(m => m.TechnologyDemosComponent)
   },
   {
-    path: 'guide',
+    path: 'chaos2clarity',
     loadComponent: () => import('./pages/guide-overview/guide-overview.component').then(m => m.GuideOverviewComponent)
   },
   {
@@ -26,5 +29,5 @@ export const routes: Routes = [
     path: 'worksheet',
     loadComponent: () => import('./pages/worksheet/worksheet.component').then(m => m.WorksheetComponent)
   },
-  { path: '**', redirectTo: '/home' }
+  { path: '**', redirectTo: '/' }
 ];

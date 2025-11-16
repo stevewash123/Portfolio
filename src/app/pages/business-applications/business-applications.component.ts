@@ -92,7 +92,7 @@ export class BusinessApplicationsComponent {
   ];
 
   goBack(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/portfolio']);
   }
 
   getCategoryIcon(category: string): string {

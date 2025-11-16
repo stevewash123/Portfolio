@@ -185,10 +185,13 @@ export class GuideOverviewComponent {
     this.meta.updateTag({ property: 'og:type', content: 'website' });
 
     // Track page navigation
-    this.ga.trackNavigation('/guide');
+    this.ga.trackNavigation('/chaos2clarity');
 
     // Update chart options for current screen size
     this.updateChartForScreenSize();
+
+    // Scroll to top of page
+    window.scrollTo(0, 0);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -252,7 +255,7 @@ export class GuideOverviewComponent {
   trackEmailClick() {
     this.ga.trackEvent('email_click', {
       source: 'guide_overview_page',
-      email: 'stevewash123@gmail.com'
+      email: 'steve@microsaasbuilders.com'
     });
   }
 }

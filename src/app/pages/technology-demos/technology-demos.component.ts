@@ -92,7 +92,7 @@ export class TechnologyDemosComponent {
   ];
 
   goBack(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/portfolio']);
   }
 
   getCategoryIcon(category: string): string {
