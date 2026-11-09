@@ -29,5 +29,17 @@ export const routes: Routes = [
     path: 'worksheet',
     loadComponent: () => import('./pages/worksheet/worksheet.component').then(m => m.WorksheetComponent)
   },
+  {
+    path: 'warrantycat',
+    loadComponent: () => import('./pages/warrantycat/warrantycat.component').then(m => m.WarrantyCatComponent)
+  },
+  {
+    path: 'warrantycat/privacy',
+    loadComponent: () => import('./pages/warrantycat-privacy/warrantycat-privacy.component').then(m => m.WarrantyCatPrivacyComponent)
+  },
+  {
+    path: 'warrantycat/terms',
+    loadComponent: () => import('./pages/warrantycat-terms/warrantycat-terms.component').then(m => m.WarrantyCatTermsComponent)
+  },
   { path: '**', redirectTo: '/' }
 ];
